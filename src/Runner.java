@@ -1,16 +1,20 @@
+import java.util.Scanner;
+
 public class Runner {
     public static void main(String[] args) {
-        Rectangle r = new Rectangle(150, 200);
-        Rectangle s = new Rectangle(100);
-        Rectangle d = new Rectangle();
-        r.setWidth(125);
-        s.setLength(125);
-        d.setWidth(125);
+        Scanner s = new Scanner(System.in);
+        System.out.println("Boards Of Lumber: ");
+        int lumber = s.nextInt();
+        System.out.println("Windows: ");
+        int windows = s.nextInt();
+        System.out.println("Tax Rate: ");
+        double taxRate = s.nextDouble();
 
-        int totalPerimeter = s.perimeter() + r.perimeter() + d.perimeter();
-        System.out.println(totalPerimeter + " Feet");
+        ConstructionPricer house1 = new ConstructionPricer(11.50, 25.75 , taxRate);
+        double cost = house1.materialsCost(lumber, windows);
+        System.out.println("Material Cost: " + cost);
+        double costWithTax = house1.totalWithTax(cost);
+        System.out.println("Total Cost: " + costWithTax);
 
-        int totalArea = s.calculateArea() + r.calculateArea() + d.calculateArea();
-        System.out.println(totalArea + " Square Feet");
     }
 }
